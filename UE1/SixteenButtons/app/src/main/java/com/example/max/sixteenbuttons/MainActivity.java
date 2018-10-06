@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int min = 1;
     int max = 16;
     Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +24,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        for (int i = min; i <= max; i++) {
            button = new Button(this);
            button.setText("Button" + " " + buttonNumber++);
-
-           LinearLayout linearLayout = findViewById(R.id.linerar_layoutId);
+           LinearLayout linearLayout = findViewById(R.id.linear_layoutId);
            linearLayout.addView(button);
+           button.setId(buttonNumber);
            button.setOnClickListener(this);
        }
-
+       setBackgroundColorGreen(button);
     }
 
 
@@ -39,15 +40,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-
     public int randomButton(){
-
         Random r = new Random();
         buttonNumber = r.nextInt(max);
-
         return buttonNumber;
 
     }
+
+    public void setBackgroundColorGreen(Button b) {
+        button.findViewById(randomButton());
+      button.setBackgroundColor(Color.GREEN);
+    }
+
+
 
 }
